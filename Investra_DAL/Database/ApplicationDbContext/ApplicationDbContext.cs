@@ -1,7 +1,4 @@
-﻿using Investra_DAL.Database.Entities;
-using Microsoft.EntityFrameworkCore;
-
-namespace Investra_DAL.Database.ApplicationDbContext
+﻿namespace Investra_DAL.Database.ApplicationDbContext
 {
     public class ApplicationDbContext: DbContext
     {
