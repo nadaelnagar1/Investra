@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Investra", "Investra\Investra.csproj", "{5A784E87-9B40-45F6-8CE7-D15283BF5737}"
+	ProjectSection(ProjectDependencies) = postProject
+		{53275173-A737-4D09-9320-9B52150DE60B} = {53275173-A737-4D09-9320-9B52150DE60B}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Investra_DAL", "Investra_DAL\Investra_DAL.csproj", "{53275173-A737-4D09-9320-9B52150DE60B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5A784E87-9B40-45F6-8CE7-D15283BF5737}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A784E87-9B40-45F6-8CE7-D15283BF5737}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A784E87-9B40-45F6-8CE7-D15283BF5737}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A784E87-9B40-45F6-8CE7-D15283BF5737}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53275173-A737-4D09-9320-9B52150DE60B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53275173-A737-4D09-9320-9B52150DE60B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53275173-A737-4D09-9320-9B52150DE60B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53275173-A737-4D09-9320-9B52150DE60B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5E1C794C-C58D-47C7-90DE-A6F5BD674CE9}
+	EndGlobalSection
+EndGlobal
