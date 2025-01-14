@@ -6,6 +6,7 @@
         {
         }
         public virtual DbSet<Stock> Stocks { get; set; }
+        public virtual DbSet<Comment> Comments { get; set; }
 
     }
 }
