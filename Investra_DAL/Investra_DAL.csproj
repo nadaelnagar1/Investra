@@ -20,8 +20,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repositories\Non-GenericRepository\" />
-  </ItemGroup>
-
 </Project>

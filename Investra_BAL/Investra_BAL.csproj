@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Domains\" />
+    <ProjectReference Include="..\Investra_DAL\Investra_DAL.csproj" />
   </ItemGroup>
 
 </Project>

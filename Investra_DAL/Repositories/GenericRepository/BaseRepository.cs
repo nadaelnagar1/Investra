@@ -1,6 +1,4 @@
-﻿using Investra_DAL.Database.ApplicationDbContext;
-
-namespace Investra_DAL.Repositories.GenericRepository
+﻿namespace Investra_DAL.Repositories.GenericRepository
 {
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
