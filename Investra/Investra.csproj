@@ -16,6 +16,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Investra_DAL\Investra_DAL.csproj" />
+     <ProjectReference Include="..\Investra_BAL\Investra_BAL.csproj" />
+
   </ItemGroup>
 
 </Project>

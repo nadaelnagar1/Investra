@@ -1,6 +1,3 @@
-using Investra_DAL.Database.ApplicationDbContext;
-using Microsoft.EntityFrameworkCore;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -15,6 +12,15 @@ builder.Services.AddDbContext<ApplicationDbContext>(opt =>
 {
     opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+#endregion
+#region Services Installer
+
+builder.Services.AddScoped<IStockRepository, StockRepository>();
+builder.Services.AddScoped<IStockService, StockService>();
+builder.Services.AddScoped<IGenericService, GenericService>();
+builder.Services.AddTransient<StockForCreateDtoValidator>();
+builder.Services.AddTransient<StockForUpdateDtoValidator>();
 
 #endregion
 var app = builder.Build();
