@@ -4,3 +4,7 @@ global using Microsoft.EntityFrameworkCore;
 global using Investra_BAL.Common.GenericServices;
 global using Investra_BAL.Domains.Stocks.StockService;
 global using Investra_BAL.Domains.Stocks.Validators;
+global using Microsoft.AspNetCore.Mvc;
+global using Investra_BAL.Domains.Stocks.DTOs;
+
+
