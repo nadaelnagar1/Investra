@@ -17,29 +17,78 @@
           
         }
 
-        public Task<OneOf<StockForReadDto, Response>> AddStock(StockForCreateDto dto)
+        public async Task<OneOf<StockForReadDto, Response>> AddStock(StockForCreateDto dto)
         {
-            throw new NotImplementedException();
+            var validationResult = _stockForCreateDtoValidator.Validate(dto);
+
+            if (!validationResult.IsValid)
+            {
+                var errors = validationResult.Errors.Select(error => error.ErrorMessage).ToList();
+                string concatenatedErrors = string.Join("; ", errors);
+                return await _genericService.CreateResponse(ResponseMessages.ValidationError, concatenatedErrors);
+            }
+
+            var adaptedStock = dto.Adapt<Stock>();
+            var createdStock = await _stockRepository.AddAsync(adaptedStock);
+            if (createdStock == null)
+            {
+                return await _genericService.CreateResponse(ResponseMessages.Error, ResponseMessages.StockCreationFailed);
+            }
+            return createdStock.Adapt<StockForReadDto>();
         }
 
-        public Task<OneOf<StockForReadDto, Response>> DeleteStock(Guid id)
+        public async Task<OneOf<StockForReadDto, Response>> DeleteStock(Guid id)
         {
-            throw new NotImplementedException();
+            var deletedStock = await _stockRepository.Delete(id);
+            if (deletedStock != null)
+            {
+                return deletedStock.Adapt<StockForReadDto>();
+            }
+            return await _genericService.CreateResponse(ResponseMessages.Error, ResponseMessages.Deleted(ResponseMessages.Stock));
         }
 
-        public Task<List<StockForReadDto>> GetAllStocks()
+        public async Task<List<StockForReadDto>> GetAllStocks()
         {
-            throw new NotImplementedException();
+            var stocks = await _stockRepository.GetAllAsync();
+            return stocks.Adapt<List<StockForReadDto>>();
         }
 
-        public Task<OneOf<StockForReadDto, Response>> GetStockById(Guid id)
+        public async Task<OneOf<StockForReadDto, Response>> GetStockById(Guid id)
         {
-            throw new NotImplementedException();
+            var stock = await _stockRepository.GetByIdAsync(id);
+            if (stock != null)
+            {
+                return stock.Adapt<StockForReadDto>();
+            }
+            return await _genericService.CreateResponse(ResponseMessages.Error, ResponseMessages.NotFound(ResponseMessages.Stock));
         }
+    
 
-        public Task<OneOf<StockForReadDto, Response>> UpdateStock(Guid id, StockForUpdateDto dto)
+        public async Task<OneOf<StockForReadDto, Response>> UpdateStock(Guid id, StockForUpdateDto dto)
         {
-            throw new NotImplementedException();
+            var validationResult = _stockForUpdateDtoValidator.Validate(dto);
+            if (!validationResult.IsValid)
+            {
+                var errors = validationResult.Errors.Select(error => error.ErrorMessage).ToList();
+                string concatenatedErrors = string.Join("; ", errors);
+                return await _genericService.CreateResponse(ResponseMessages.ValidationError, concatenatedErrors);
+            }
+
+            var existingStock = await _stockRepository.GetByIdAsync(id);
+            if (existingStock == null)
+            {
+                return await _genericService.CreateResponse(ResponseMessages.Error, ResponseMessages.NotFound(ResponseMessages.Stock));
+            }
+
+            dto.Adapt(existingStock);
+
+            var updatedStock = await _stockRepository.Update(existingStock);
+            if (updatedStock == null)
+            {
+                return await _genericService.CreateResponse(ResponseMessages.Error, ResponseMessages.UpdateFailed(ResponseMessages.Stock));
+            }
+
+            return updatedStock.Adapt<StockForReadDto>();
         }
     }
 }

@@ -5,6 +5,8 @@
         public const string Error = "Error";
         public const string notFound = "NotFound";
         public const string ValidationError = "Validation Error";
+        public const string StockCreationFailed = "Stock Creation Failed";
+        public const string Stock = "Stock";
 
         public static string Deleted(string intended)
         {
@@ -13,6 +15,10 @@
         public static string NotFound(string intended)
         {
             return $"{intended} Not Found";
+        }
+        public static string UpdateFailed(string intended)
+        {
+            return $"{intended} Update Failed";
         }
     }
 }
