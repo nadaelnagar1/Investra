@@ -21,6 +21,7 @@ builder.Services.AddScoped<IStockService, StockService>();
 builder.Services.AddScoped<IGenericService, GenericService>();
 builder.Services.AddTransient<StockForCreateDtoValidator>();
 builder.Services.AddTransient<StockForUpdateDtoValidator>();
+builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 
 #endregion
 var app = builder.Build();

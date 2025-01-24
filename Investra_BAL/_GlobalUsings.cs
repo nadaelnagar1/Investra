@@ -8,3 +8,5 @@ global using Investra_DAL.Repositories.Non_GenericRepository.StockRepository;
 global using Investra_BAL.Domains.Stocks.Validators;
 global using Investra_DAL.Database.Entities;
 global using Mapster;
+global using Investra_BAL.Domains.Comments.DTOs;
+
